@@ -2,8 +2,8 @@ package roboguice.fragment;
 
 import roboguice.RoboGuice;
 
+import android.app.ListFragment;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.view.View;
 
 public abstract class RoboListFragment extends ListFragment {

@@ -4,18 +4,17 @@ import com.xtremelabs.robolectric.internal.Implementation;
 import com.xtremelabs.robolectric.internal.Implements;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 @Implements(Fragment.class)
 public class ShadowFragment {
-    protected FragmentActivity activity;
+    protected Activity activity;
     protected View view;
 
     @Implementation
-    public FragmentActivity getActivity() {
+    public Activity getActivity() {
         return activity;
     }
 
@@ -25,12 +24,12 @@ public class ShadowFragment {
     }
 
     @Implementation
-    public void onViewCreated( View v, Bundle savedInstanceState ) {
+    public void onViewCreated(View v, Bundle savedInstanceState) {
         view = v;
     }
 
     @Implementation
-    public void onAttach( Activity a ) {
-        activity = (FragmentActivity)a;
+    public void onAttach(Activity a) {
+        activity = (Activity) a;
     }
 }

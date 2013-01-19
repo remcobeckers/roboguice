@@ -3,8 +3,8 @@ package roboguice.inject;
 import roboguice.inject.ViewListener.ViewMembersInjector;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
-import android.support.v4.app.Fragment;
 
 import com.google.inject.*;
 import com.google.inject.spi.TypeConverterBinding;
@@ -236,12 +236,12 @@ public class ContextScopedRoboInjector implements RoboInjector {
         injectMembersWithoutViews(instance);
     }
 
-    public void injectMembersWithoutViews( Object instance ) {
+    public void injectMembersWithoutViews(Object instance) {
         synchronized (ContextScope.class) {
             scope.enter(context);
             try {
                 delegate.injectMembers(instance);
-            }finally {
+            } finally {
                 scope.exit(context);
             }
         }
@@ -252,7 +252,7 @@ public class ContextScopedRoboInjector implements RoboInjector {
         synchronized (ContextScope.class) {
             scope.enter(context);
             try {
-                if( context!=activity )
+                if (context != activity)
                     throw new UnsupportedOperationException("internal error, how did you get here?");
 
                 ViewMembersInjector.injectViews(activity);

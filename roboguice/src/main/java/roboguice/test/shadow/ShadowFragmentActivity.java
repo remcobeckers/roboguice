@@ -1,20 +1,22 @@
 package roboguice.test.shadow;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+
 import com.xtremelabs.robolectric.internal.Implementation;
 import com.xtremelabs.robolectric.internal.Implements;
 import com.xtremelabs.robolectric.shadows.ShadowActivity;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.Fragment.SavedState;
+import android.app.FragmentManager;
+import android.app.FragmentManager.BackStackEntry;
+import android.app.FragmentManager.OnBackStackChangedListener;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.Fragment.SavedState;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
-
-@Implements(FragmentActivity.class)
+@Implements(Activity.class)
 public class ShadowFragmentActivity extends ShadowActivity {
 
     @Implementation
@@ -224,6 +226,5 @@ public class ShadowFragmentActivity extends ShadowActivity {
             }
         };
     }
-
 
 }
